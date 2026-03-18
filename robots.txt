@@ -4,4 +4,4 @@ Allow: /
 Disallow: /src/
 Disallow: /node_modules/
 
-Sitemap: https://diananails.com/sitemap.xml
+Sitemap: https://diana-nails.vercel.app/sitemap.xml
