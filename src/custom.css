@@ -1,0 +1,164 @@
+/* ═══════════════════════════════════════
+   Diana Nails — Custom CSS
+═══════════════════════════════════════ */
+
+/* Scroll suave global */
+html { scroll-behavior: smooth; }
+
+/* ─── Transición de página ──────────── */
+body {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+body.page-loaded  { opacity: 1; }
+body.page-leaving { opacity: 0; }
+
+/* ─── Scroll Reveal ─────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.is-visible          { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.10s; }
+.reveal-delay-2 { transition-delay: 0.20s; }
+.reveal-delay-3 { transition-delay: 0.30s; }
+.reveal-delay-4 { transition-delay: 0.40s; }
+
+/* ─── WhatsApp flotante — pulso verde ── */
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,.45); }
+  60%       { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+}
+.wa-pulse { animation: waPulse 2.2s ease-out infinite; }
+
+/* ─── Nav link activo ───────────────── */
+.nav-active { color: rgb(236 72 153) !important; }
+.nav-active::after { width: 100% !important; }
+
+/* ─── Hamburger animado ─────────────── */
+.bar {
+  display: block;
+  width: 24px; height: 2px;
+  background-color: #374151;
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
+  transform-origin: center;
+}
+.bar-open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.bar-open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.bar-open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── Scroll indicator (hero) ──────── */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+.scroll-indicator {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollBounce 1.6s ease-in-out infinite;
+}
+
+/* ─── Scroll-to-top button ──────────── */
+#scrollTop { transition: opacity .3s ease, transform .3s ease; }
+
+/* ─── Promo banner ──────────────────── */
+#promo-banner {
+  max-height: 56px;
+  overflow: hidden;
+  transition: max-height .4s ease, opacity .4s ease;
+}
+
+/* ─── Lightbox ──────────────────────── */
+#lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+#lightbox.lb-open { opacity: 1; pointer-events: all; }
+
+.lb-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.92);
+  cursor: pointer;
+}
+.lb-container {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 12px;
+  max-width: min(90vw, 900px);
+}
+.lb-img {
+  max-width: 88vw; max-height: 78vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.6);
+  transition: opacity .2s ease;
+}
+.lb-close {
+  position: absolute; top: -44px; right: 0;
+  background: rgba(255,255,255,.12); color: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+  width: 36px; height: 36px; border-radius: 50%;
+  font-size: 17px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.lb-close:hover { background: rgba(236,72,153,.5); }
+.lb-prev, .lb-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,.12); color: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+  width: 48px; height: 48px; border-radius: 50%;
+  font-size: 30px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s; line-height: 1;
+}
+.lb-prev { left: -64px; }
+.lb-next { right: -64px; }
+.lb-prev:hover, .lb-next:hover { background: rgba(236,72,153,.5); }
+.lb-caption {
+  color: rgba(255,255,255,.7); font-size: 13px;
+  font-family: 'Montserrat', sans-serif; text-align: center;
+}
+@media (max-width: 640px) {
+  .lb-prev { left: 4px; }
+  .lb-next { right: 4px; }
+  .lb-close { top: -40px; right: 0; }
+}
+
+/* ─── FAQ acordeón ──────────────────── */
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease;
+}
+.faq-icon { transition: transform .3s ease; }
+
+/* ─── Focus accesible ───────────────── */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid rgb(236 72 153);
+  outline-offset: 3px; border-radius: 6px;
+}
+
+/* ─── Selección de texto ────────────── */
+::selection {
+  background-color: rgb(251 207 232);
+  color: rgb(157 23 77);
+}
+
+/* ─── Prefers-reduced-motion ────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  body { opacity: 1 !important; transition: none !important; }
+  .wa-pulse { animation: none !important; }
+  .scroll-indicator { animation: none !important; }
+}
