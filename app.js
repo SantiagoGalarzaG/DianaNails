@@ -2,7 +2,7 @@
    Diana Nails — app.js
    ↳ IMPORTANTE: cambia este número por el tuyo real
 ═══════════════════════════════════════ */
-const WA_NUMBER  = "573000000000";
+const WA_NUMBER  = "573204799613";
 const WA_MESSAGE = "Hola%2C%20quiero%20reservar%20una%20cita%20en%20Diana%20Nails";
 
 /* ════════════════════════════════════════
